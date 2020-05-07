@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Carousel from "../components/Carousel";
 import MovieList from "../components/MovieList";
+import Footer from "../components/Footer";
 
 const Home = () => {
     return (
@@ -23,34 +24,21 @@ const Home = () => {
                         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
                         crossOrigin="anonymous"></script>
             </Head>
-
             <Navbar/>
-
             <div className="container">
                 <div className="row">
-
                     <div className="col-lg-3">
                         <Sidebar/>
                     </div>
-
                     <div className="col-lg-9">
-
                         <Carousel/>
-
                         <div className="row">
-
                             <MovieList/>
-
                         </div>
                     </div>
                 </div>
             </div>
-            <footer className="py-5 bg-dark">
-                <div className="container">
-                    <p className="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-                </div>
-            </footer>
-
+            <Footer/>
         </div>
     );
 };
