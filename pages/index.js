@@ -5,13 +5,7 @@ import Carousel from "../components/Carousel";
 import MovieList from "../components/MovieList";
 import {getMovies} from "../actions";
 
-const Home = () => {
-    const [movies, setMovies] = useState([]);
-
-    useEffect(() => {
-        setMovies(getMovies());
-    }, []);
-
+const Home = (props) => {
     return (
         <div>
             <div className="container">
@@ -22,13 +16,19 @@ const Home = () => {
                     <div className="col-lg-9">
                         <Carousel/>
                         <div className="row">
-                            <MovieList movies={movies}/>
+                            <MovieList movies={props.movies}/>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     );
+};
+
+Home.getInitialProps = () => {
+    return {
+        movies: getMovies()
+    };
 };
 
 export default Home;
