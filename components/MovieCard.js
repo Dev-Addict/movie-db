@@ -11,7 +11,7 @@ const MovieCard = (props) => {
                     <h4 className="card-title">
                         <a href="#">{name}</a>
                     </h4>
-                    <p className="card-text">{description}</p>
+                    <p className="card-text">{`${description.substr(0, 100)}...`}</p>
                 </div>
                 <div className="card-footer">
                     <small className="text-muted"><Rating raiting={Math.floor(rating)}/></small>
