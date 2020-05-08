@@ -6,7 +6,7 @@ const MovieCard = (props) => {
     const {name, description, cover, rating, id} = props.movie;
 
     return (
-        <Link href={`/movies/${id}`}>
+        <Link href="/movies/[id]" as={`/movies/${id}`}>
             <div className="col-lg-4 col-md-6 mb-4">
                 <div className="card h-100">
                     <a><img className="card-img-top" src={cover} alt={name}/></a>

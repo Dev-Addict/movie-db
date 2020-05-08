@@ -37,3 +37,7 @@ const movieData = [
 export const getMovies = () => {
     return movieData
 };
+
+export const getMovieById = id => {
+    return movieData[movieData.findIndex(movie => movie.id === id)];
+};
