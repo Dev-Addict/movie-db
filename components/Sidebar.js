@@ -1,5 +1,7 @@
 import {Fragment} from 'react';
+
 import Modal from "./Modal";
+import CreateMovieFrom from "./CreateMovieForm";
 
 const Sidebar = (props) => {
     const {categories} = props;
@@ -11,7 +13,9 @@ const Sidebar = (props) => {
 
     return (
         <Fragment>
-            <Modal/>
+            <Modal>
+                <CreateMovieFrom/>
+            </Modal>
             <h1 className="my-4">{props.appName}</h1>
             <div className="list-group">
                 <a href="#" className="list-group-item" key="0">All</a>
