@@ -1,8 +1,8 @@
 import {useState} from 'react';
 
-import {getCategories} from "../actions";
+import {getCategories, createMovie as pushMovie} from "../actions";
 
-const CreateMovieFrom = () => {
+const CreateMovieFrom = ({createMovie}) => {
     const [form, setForm] = useState({
         name: '',
         description: '',
@@ -32,8 +32,23 @@ const CreateMovieFrom = () => {
         setForm({...form, [name]: value});
     };
 
+    const submitMovie = event => {
+        event.preventDefault();
+        createMovie();
+        pushMovie({...form, genre: form.genre.join(', ')});
+        setForm({
+            name: '',
+            description: '',
+            rating: 0,
+            image: '',
+            cover: '',
+            longDesc: '',
+            genre: []
+        });
+    };
+
     return (
-        <form>
+        <form onSubmit={submitMovie}>
             <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input type="text" className="form-control" id="name" aria-describedby="emailHelp"
@@ -72,6 +87,7 @@ const CreateMovieFrom = () => {
                     {renderOptions()}
                 </select>
             </div>
+            <button type="submit" className="btn btn-primary">Create</button>
         </form>
     )
 };

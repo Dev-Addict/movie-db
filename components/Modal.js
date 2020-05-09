@@ -1,7 +1,8 @@
 import {Fragment, createRef} from 'react';
 
+import CreateMovieFrom from "./CreateMovieForm";
 
-const Modal = ({children}) => {
+const Modal = () => {
     let closeButtonRef = createRef();
 
     const createMovie = () => {
@@ -24,11 +25,10 @@ const Modal = ({children}) => {
                             </button>
                         </div>
                         <div className="modal-body">
-                            {children}
+                            <CreateMovieFrom createMovie={createMovie}/>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal" ref={closeButtonRef}>Close</button>
-                            <button type="button" className="btn btn-primary" onClick={createMovie}>Create</button>
                         </div>
                     </div>
                 </div>

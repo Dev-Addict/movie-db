@@ -57,3 +57,8 @@ export const getCategories = () => {
         id: `${index + 1}`
     }))
 };
+
+export const createMovie = movie => {
+    movie.id = movieData.length;
+    movieData.push(movie);
+};
