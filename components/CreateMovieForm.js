@@ -20,6 +20,18 @@ const CreateMovieFrom = () => {
         setForm({...form, [name]: value});
     };
 
+    const handleGenreChange = (event) => {
+        const {options, name} = event.target;
+        const value = [];
+        for(let i = 0; i < options.length; i++) {
+            if (options[i].selected) {
+                value.push(options[i].value);
+            }
+        }
+
+        setForm({...form, [name]: value});
+    };
+
     return (
         <form>
             <div className="form-group">
@@ -56,7 +68,7 @@ const CreateMovieFrom = () => {
             <div className="form-group">
                 <label htmlFor="genre">Genre</label>
                 <select multiple className="form-control" id="genre" value={form.genre} name="genre"
-                        onChange={handleChange}>
+                        onChange={handleGenreChange}>
                     {renderOptions()}
                 </select>
             </div>
