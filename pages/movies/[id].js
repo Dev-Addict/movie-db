@@ -28,8 +28,8 @@ const Movie = (props) => {
     );
 };
 
-Movie.getInitialProps = (context) => {
-    const movie = getMovieById(context.query.id);
+Movie.getInitialProps = async (context) => {
+    const movie = await getMovieById(context.query.id);
     return {
         movie
     };

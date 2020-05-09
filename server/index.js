@@ -16,6 +16,12 @@ app.prepare().then(() => {
         res.json(moviesData);
     });
 
+    server.get('/api/v1/movies/:id', (req, res) => {
+        const {id} = req.query;
+        const movies = JSON.parse(moviesData);
+        res.json(JSON.stringify(movies[movies.findIndex(({mId}) => mId === id)]));
+    });
+
     server.get('*', (req, res) => {
         return handler(req, res);
     });

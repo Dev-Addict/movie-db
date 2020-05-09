@@ -40,8 +40,8 @@ export const getMovies = async () => {
     return await axios.get('/api/v1/movies').data;
 };
 
-export const getMovieById = id => {
-    return movieData[movieData.findIndex(movie => movie.id === id)];
+export const getMovieById = async id => {
+    return await axios.get(`/api/v1/movies/${id}`).data;
 };
 
 export const getCategories = () => {
