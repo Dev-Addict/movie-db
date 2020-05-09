@@ -6,6 +6,8 @@ import MovieList from "../components/MovieList";
 import {getMovies} from "../actions";
 
 const Home = (props) => {
+    const {images} = props;
+
     return (
         <div>
             <div className="container">
@@ -14,7 +16,7 @@ const Home = (props) => {
                         <Sidebar appName="Movie DB"/>
                     </div>
                     <div className="col-lg-9">
-                        <Carousel/>
+                        <Carousel images={images}/>
                         <div className="row">
                             <MovieList movies={props.movies}/>
                         </div>
@@ -26,8 +28,15 @@ const Home = (props) => {
 };
 
 Home.getInitialProps = () => {
+    const movies = getMovies();
+    const images = movies.map(({id, cover, name}) => ({
+        id: `image-${id}`,
+        image: cover,
+        name
+    }));
     return {
-        movies: getMovies()
+        movies,
+        images
     };
 };
 
