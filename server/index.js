@@ -3,12 +3,19 @@ const {parse} = require('url');
 const next = require('next');
 const express = require('express');
 
+const moviesData = require('./moviesData');
+
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({dev});
 const handler = app.getRequestHandler();
 
 app.prepare().then(() => {
     const server = express();
+
+    server.get('/api/v1/movies', (req, res) => {
+        res.json(moviesData);
+    });
+
     server.get('*', (req, res) => {
         return handler(req, res);
     });

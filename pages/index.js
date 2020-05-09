@@ -1,5 +1,3 @@
-import {useState, useEffect} from 'react';
-
 import Sidebar from "../components/Sidebar";
 import Carousel from "../components/Carousel";
 import MovieList from "../components/MovieList";
@@ -29,9 +27,9 @@ const Home = (props) => {
     );
 };
 
-Home.getInitialProps = () => {
-    const movies = getMovies();
-    const images = movies.map(({id, cover, name}) => ({
+Home.getInitialProps = async () => {
+    const movies = await getMovies();
+    const images = await movies.map(({id, cover, name}) => ({
         id: `image-${id}`,
         image: cover,
         name

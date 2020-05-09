@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const movieData = [
     {
         "id": "1",
@@ -34,8 +36,8 @@ const movieData = [
     }
 ];
 
-export const getMovies = () => {
-    return movieData;
+export const getMovies = async () => {
+    return await axios.get('/api/v1/movies').data;
 };
 
 export const getMovieById = id => {
