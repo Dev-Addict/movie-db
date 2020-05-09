@@ -3,22 +3,24 @@ import {useState, useEffect} from 'react';
 import Sidebar from "../components/Sidebar";
 import Carousel from "../components/Carousel";
 import MovieList from "../components/MovieList";
-import {getMovies} from "../actions";
+import {getMovies, getCategories} from "../actions";
 
 const Home = (props) => {
-    const {images} = props;
+    const {images, movies, categories} = props;
 
     return (
         <div>
             <div className="container">
                 <div className="row">
                     <div className="col-lg-3">
-                        <Sidebar appName="Movie DB"/>
+                        <Sidebar
+                            appName="Movie DB"
+                            categories={categories}/>
                     </div>
                     <div className="col-lg-9">
                         <Carousel images={images}/>
                         <div className="row">
-                            <MovieList movies={props.movies}/>
+                            <MovieList movies={movies}/>
                         </div>
                     </div>
                 </div>
@@ -34,9 +36,11 @@ Home.getInitialProps = () => {
         image: cover,
         name
     }));
+    const categories = getCategories();
     return {
         movies,
-        images
+        images,
+        categories
     };
 };
 

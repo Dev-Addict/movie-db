@@ -35,9 +35,25 @@ const movieData = [
 ];
 
 export const getMovies = () => {
-    return movieData
+    return movieData;
 };
 
 export const getMovieById = id => {
     return movieData[movieData.findIndex(movie => movie.id === id)];
+};
+
+export const getCategories = () => {
+    const genresArray = movieData.map(({genre}) => genre.split(', '));
+    const categoriesArray = [];
+    genresArray.forEach(genreArray => {
+        genreArray.forEach(genre => {
+            if (!categoriesArray.includes(genre)) {
+                categoriesArray.push(genre);
+            }
+        });
+    });
+    return categoriesArray.map((category, index) => ({
+        category,
+        id: `${index + 1}`
+    }))
 };
