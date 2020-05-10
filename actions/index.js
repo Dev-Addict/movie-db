@@ -1,3 +1,4 @@
+import {useRouter} from "next/router";
 import axios from 'axios';
 
 const movieData = [
@@ -60,7 +61,7 @@ export const getCategories = () => {
     }))
 };
 
-export const createMovie = movie => {
-    movie.id = movieData.length;
-    movieData.push(movie);
+export const createMovie = async movie => {
+    await axios.post('/api/v1/movies', movie);
+    useRouter().push('/');
 };

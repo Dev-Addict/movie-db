@@ -32,10 +32,10 @@ const CreateMovieFrom = ({createMovie}) => {
         setForm({...form, [name]: value});
     };
 
-    const submitMovie = event => {
+    const submitMovie = async event => {
         event.preventDefault();
         createMovie();
-        pushMovie({...form, genre: form.genre.join(', ')});
+        await pushMovie({...form, genre: form.genre.join(', ')});
         setForm({
             name: '',
             description: '',
