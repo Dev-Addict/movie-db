@@ -65,3 +65,8 @@ export const createMovie = async movie => {
     await axios.post('/api/v1/movies', movie);
     useRouter().push('/');
 };
+
+export const deleteMovie = async id => {
+    await axios.delete(`api/v1/movies/${id}`);
+    useRouter().push('/');
+};

@@ -35,6 +35,16 @@ app.prepare().then(() => {
         res.json({message: 'updated'});
     });
 
+    server.delete('api/v1/movies/:id', async (req, res) => {
+        const movies = JSON.parse(moviesData);
+        const filePath = path.join(__dirname, '/movieData.json');
+        const json = JSON.stringify(movies.filter(({id}) => id === req.query.id), null, 4);
+        await fs.writeFile(filePath, json, err => {
+            return res.status(422).send(err);
+        });
+        res.json({message: 'deleted'});
+    });
+
     server.get('*', (req, res) => {
         return handler(req, res);
     });
